@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friday Bridge Data Tech</title>
+
+  <style>
+    body {
+      background-color: oklab(78.792% -0.0046 0.15897); /* light blue */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      color: #333;
+    }
+
+    @keyframes fadeInHeader {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      background-color: lab(71.72% 32.99 13.89);
+      color: hwb(0 0% 100%); /* purple */
+      text-align: center;
+      padding: 40px 0;
+      font-size: 5.5em;
+      letter-spacing: 50px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeInHeader 1.5s ease forwards;
+    }
+
+    .slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 3000px;
+      margin: 60px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+    }
+
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slideshow img.active {
+      opacity: 1;
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(425px, 1fr));
+      gap: 20px;
+      padding: 0px;
+      max-width: 1600px;
+      margin: 0 auto 80px;
+    }
+
+    .blog-column {
+      background: hsla(192, 96%, 72%, 0.851);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      min-height: auto-fill;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .blog-column:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+    }
+
+    .blog-column h2 {
+      color: hsl(251, 100%, 62%);
+      font-size: 2.6em;
+      margin-bottom: 15px;
+    }
+
+    .blog-column p {
+      color: hsl(0, 97%, 54%);
+      line-height: 1.6;
+      font-size: 2.1em;
+    }
+
+    .blog-image {
+      width: 105%;
+      height: 625px;
+      object-fit: auto-fill;
+      border-radius: 48px;
+      margin-bottom: 100px;
+      box-shadow: 0 2px 10px hsla(0, 0%, 100%, 0.542);
+    }
+
+    ul {
+      margin-top: 15px;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .slideshow img {
+        height: 350px;
+      }
+
+      .blog-column {
+        min-height: 600px;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    Welcome to my Portfolio
+  </header>
+
+  <!-- Image Slideshow -->
+  <div class="slideshow">
+    <img src="IMG_6190.jpeg" class="active" alt="Cloud the dog">
+    <img src="IMG_6191.jpeg" alt="Portrait of Ethan">
+    <img src="IMG_6190.jpeg" alt="Toronto city photo">
+  </div>
+
+  <!-- Blog Section -->
+  <div class="blog-container">
+    <div class="blog-column">
+      <img class="blog-image" src="IMG_6190.jpeg" alt="Cloud the dog">
+      <h2>Meet my dog Cloud</h2>
+      <p>He's a full breed poodle with spots all over that look like smoke clouds</p>
+      <ul>
+        <li>He loves to play with socks</li>
+        <li>He only eats beef flavoured food</li>
+        <li>Can jump up and down while spinning</li>
+      </ul>
+    </div>
+
+    <div class="blog-column">
+      <img class="blog-image" src="IMG_6191.jpeg" alt="Portrait of Ethan">
+      <h2>My name is Ethan Hernandez</h2>
+      <p>A First Nation man living his best life in the city.</p>
+      <ul>
+        <li>Loves to eat great finger food</li>
+        <li>Into live music events</li>
+        <li>Loves long walks on the beach with music in my ears</li>
+      </ul>
+    </div>
+
+    <div class="blog-column">
+      <img class="blog-image" src="IMG_6189.jpeg" alt="Toronto city photo">
+      <h2>Meet my City.</h2>
+      <p>Toronto — the greatest in the North</p>
+      <ul>
+        <li>Home of all the best sports teams in the world</li>
+        <li>A large mix of culture and music</li>
+        <li>One of the best places to try all sorts of cuisines</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
+
+    function changeSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(changeSlide, 1000); // every 3 seconds
+  </script>
+
+</body>
+</html>
